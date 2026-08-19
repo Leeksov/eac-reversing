@@ -1,0 +1,41 @@
+# Binaries
+*.dylib
+*.bin
+*.so
+*.o
+
+# IDA databases
+*.i64
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+*.idb
+
+# macOS
+.DS_Store
+
+# Raw trace data (too large for git)
+devirt/runs/
+devirt/effects/
+devirt/cv_dynamic_cfg.json
+devirt/coverage_matrix*.json
+devirt/cv_effects.json
+devirt/cv_observable_slices.json
+devirt/devirt_ir.json
+devirt/cv_inventory.json
+
+# Trace reports
+/tmp/svc_*.json
+traces/
+
+# Python
+__pycache__/
+*.pyc
+*.pkl
+
+# Editor
+*.swp
+*.swo
+*~

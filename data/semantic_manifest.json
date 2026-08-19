@@ -1,0 +1,387 @@
+{
+ "schema": "cv-semantic-recovery-v1",
+ "module": "/Users/leeksov/Desktop/reversesmth/pcrust/mac_arm64.decoded",
+ "function_count": 28,
+ "confidence_scale": [
+  "exact-source-match",
+  "differentially-verified",
+  "recovered-high-level",
+  "partial",
+  "pending"
+ ],
+ "functions": [
+  {
+   "address": "0x38b0",
+   "name": "cv_u32_is_one",
+   "status": "differentially-verified",
+   "summary": "returns *value == 1"
+  },
+  {
+   "address": "0x3924",
+   "name": "cv_load_validate_eac_configuration",
+   "status": "differentially-verified",
+   "summary": "opens <dir>/EasyAntiCheat\\Certificates\\runtime.conf (mixed separators); VM byte-decoder over whole file; sole predicate = size>=1108 bytes; content never checked (full-size random file passes identically); decoded plaintext layout in runtime_conf_format.md"
+  },
+  {
+   "address": "0x3cfc",
+   "name": "cv_validation_vararg_adapter",
+   "status": "recovered-high-level",
+   "summary": "VM chunk at 0x3CFC is the native continuation tail of the 0x3C44 protected wrapper: materializes (x0=x20,x1=x19,x2=sp+0x70,x3=sp+0x58,x4=x21) and bl 0x3D84; executed in real-file child flow (activation_child_realfiles)"
+  },
+  {
+   "address": "0x3d24",
+   "name": "cv_validation_state_init",
+   "status": "differentially-verified",
+   "summary": "writes exactly 0x4c bytes: uint32 fields 0/1 become 1 and the rest zero; returns x0 unchanged; x2 is ignored"
+  },
+  {
+   "address": "0x3d84",
+   "name": "cv_validate_runtime_configuration",
+   "status": "recovered-high-level",
+   "summary": "runtime.conf decode/validation core; size predicate lives here; content-blind after decode; cert chain (0x3FB8) non-fatal; decoded fields handed onward, not branched on"
+  },
+  {
+   "address": "0x3fb8",
+   "name": "cv_validate_certificate_blob",
+   "status": "recovered-high-level",
+   "summary": "certificate parse via 0x3D84 chain; executed with real base.cer; zeroed cert still launches -> cert validity not load-bearing in launcher flow"
+  },
+  {
+   "address": "0x420c",
+   "name": "cv_launcher_activate_v2",
+   "status": "recovered-high-level",
+   "summary": "activation orchestrator; full real-file differential matrix in activation_flow.md: junk conf -> callback 510 'Validation of the anti-cheat configuration failed.' and abort before fork; valid -> fork+execv; parent reports progress 1002"
+  },
+  {
+   "address": "0x43ec",
+   "name": "cv_validate_then_launch",
+   "status": "recovered-high-level",
+   "summary": "hit only on validation-abort path (junk runtime.conf run, diff_junkconf coverage); error-reporting variant of validate_then_launch"
+  },
+  {
+   "address": "0x4848",
+   "name": "cv_fork_and_launch",
+   "status": "recovered-high-level",
+   "summary": "fork orchestration; parent reports through callback, child prepares process, publishes handoff image and reaches execv"
+  },
+  {
+   "address": "0x4a04",
+   "name": "cv_load_localization",
+   "status": "differentially-verified",
+   "summary": "export e localization loader; builds EasyAntiCheat/Localization, selects/parses en_us.cfg; missing file -> false, real Rust cfg -> true"
+  },
+  {
+   "address": "0x4cd8",
+   "name": "cv_prepare_child_process",
+   "status": "recovered-high-level",
+   "summary": "unset DYLD_INSERT_LIBRARIES, close fds 3..1023, PT_DENY_ATTACH"
+  },
+  {
+   "address": "0x4d90",
+   "name": "cv_publish_embedded_image_shm",
+   "status": "recovered-high-level",
+   "summary": "publishes shm handoff: header {ver=2,size=0x328,qword1,{0,2},0xC,product/sandbox/deployment GUIDs @0x1C/0x5C/0x9C} + 0x657AE0 embedded image @0x328"
+  },
+  {
+   "address": "0xf820",
+   "name": "mbedtls_cipher_update",
+   "status": "exact-source-match",
+   "summary": "Mbed TLS 2.4.1 cipher update"
+  },
+  {
+   "address": "0x20c10",
+   "name": "mbedtls_gcm_starts",
+   "status": "exact-source-match",
+   "summary": "Mbed TLS 2.4.1 GCM starts"
+  },
+  {
+   "address": "0x210f4",
+   "name": "mbedtls_gcm_update",
+   "status": "exact-source-match",
+   "summary": "Mbed TLS 2.4.1 GCM update"
+  },
+  {
+   "address": "0x21420",
+   "name": "mbedtls_gcm_finish",
+   "status": "exact-source-match",
+   "summary": "Mbed TLS 2.4.1 GCM finish"
+  },
+  {
+   "address": "0x4e1d4",
+   "name": "cv_field8_is_minus_one",
+   "status": "differentially-verified",
+   "summary": "returns *(int32_t *)(object+8) == -1"
+  },
+  {
+   "address": "0x4e324",
+   "name": "cv_load_blob_as_temp_dylib_adapter",
+   "status": "differentially-verified",
+   "summary": "transparent adapter returning the exact 0x4E3A0/dlopen handle; modeled non-null handle propagated unchanged"
+  },
+  {
+   "address": "0x4e3a0",
+   "name": "cv_load_blob_as_temp_dylib",
+   "status": "recovered-high-level",
+   "summary": "exclusive UUID temp file, write blob, chmod 0500, dlopen RTLD_LAZY, close/unlink"
+  },
+  {
+   "address": "0x52540",
+   "name": "cv_init_anti_debug",
+   "status": "differentially-verified",
+   "summary": "bypass ? true : cv_enable_anti_debug()"
+  },
+  {
+   "address": "0x52ae0",
+   "name": "cv_enable_anti_debug",
+   "status": "differentially-verified",
+   "summary": "reject traced process; probe /tmp/eac.flag; PT_DENY_ATTACH; success"
+  },
+  {
+   "address": "0x52b64",
+   "name": "cv_read_and_discard_tmp_eac_flag",
+   "status": "differentially-verified",
+   "summary": "opens and reads /tmp/eac.flag into a temporary, destroys it and returns void; 0/1/false/true follow the same path and cause no persistent writes"
+  },
+  {
+   "address": "0x52ed4",
+   "name": "cv_is_not_traced_sysctl",
+   "status": "differentially-verified",
+   "summary": "Darwin KERN_PROC_PID sysctl; returns !(p_flag & P_TRACED), fail-open"
+  },
+  {
+   "address": "0x532ac",
+   "name": "cv_collect_vm_regions",
+   "status": "recovered-high-level",
+   "summary": "enumerates vm_region_64 entries and associated proc_regionfilename data"
+  },
+  {
+   "address": "0x53850",
+   "name": "cv_readable_span_from_regions",
+   "status": "recovered-high-level",
+   "summary": "intersects requested address range with collected readable regions"
+  },
+  {
+   "address": "0x53cf0",
+   "name": "cv_copy_containing_vm_region",
+   "status": "differentially-verified",
+   "summary": "finds region.start <= address < region.end, copies the entire region to an output byte vector and returns its size; region record size is 0x48"
+  },
+  {
+   "address": "0x548dc",
+   "name": "cv_exec_target_with_args",
+   "status": "recovered-high-level",
+   "summary": "pe-bitness gate: I386/AMD64 target -> _exit(1) without execv (differentially verified); non-PE/unknown machine -> execv with launcher args appended verbatim"
+  },
+  {
+   "address": "0x54aac",
+   "name": "cv_get_pe_bitness",
+   "status": "differentially-verified",
+   "summary": "valid PE: I386 -> 32, AMD64 -> 64; all other machines/invalid headers -> false"
+  }
+ ],
+ "vm_opcodes": [
+  {
+   "opcode": "0x5e",
+   "semantic": "load_u8",
+   "evidence": "four width-dispatcher copies"
+  },
+  {
+   "opcode": "0xa3",
+   "semantic": "load_u16",
+   "evidence": "four width-dispatcher copies"
+  },
+  {
+   "opcode": "0xb9",
+   "semantic": "load_u32",
+   "evidence": "four width-dispatcher copies"
+  },
+  {
+   "opcode": "0xfd",
+   "semantic": "load_u64",
+   "evidence": "four width-dispatcher copies"
+  },
+  {
+   "opcode": "0x2",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x9",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x24",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x2e",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x34",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x35",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x47",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x48",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x52",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x53",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x6d",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x71",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x7b",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x7d",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x8c",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x99",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0x9b",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0xac",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0xba",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0xd6",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0xda",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0xde",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  },
+  {
+   "opcode": "0xfb",
+   "semantic": "see vm_isa.md",
+   "evidence": "static dispatcher extraction"
+  }
+ ],
+ "evidence": {
+  "real_file_activation_2026_08_16": {
+   "runs": [
+    "activation_parent_realfiles.json",
+    "activation_child_realfiles.json",
+    "validation_junkconf_aborted.json",
+    "validation_badcer_launched.json"
+   ],
+   "notes": "see activation_flow.md; GCM/cipher 0 instructions; callback 510 on malformed runtime.conf; mixed-separator path construction"
+  },
+  "runtime_conf_differential_2026_08_16": {
+   "runs": [
+    "validation_size_1107_failed.json",
+    "validation_size_1108_passed.json",
+    "validation_junkfullsize_launched.json"
+   ],
+   "notes": "size>=1108 sole predicate; content blind; see runtime_conf_format.md"
+  },
+  "failure_and_pe_2026_08_16": {
+   "runs": [
+    "failure_traced_502.json",
+    "pe_i386_exit.json",
+    "pe_unknown_execv.json",
+    "shm_header_dump.log",
+    "decoder_diffusion_mut64.effects.json"
+   ],
+   "notes": "callback 502 on traced; PE I386/AMD64 -> _exit(1); shm header full layout; decoder backward diffusion characterized"
+  },
+  "runtime_codec_2026_08_16": {
+   "artifacts": [
+    "eac_embedded_image.bin",
+    "tools/decoder_oracle.py",
+    "runs/decoder_iteration_snapshot.pkl",
+    "runtime_codec.md"
+   ],
+   "notes": "embedded image extracted; codec per-byte VM program fixed 27388 instr; t[j]=F(t[j+1],c[j+1],t[j+2]) proven; oracle built"
+  },
+  "eos_consumer_2026_08_17": {
+   "artifacts": [
+    "runs/eos_arm64.dylib",
+    "runtime_codec.md"
+   ],
+   "notes": "consumer confirmed: EOS SDK arm64 sub_563D5C parses magic 0xE6ACC57F, sizes w27+w26+0xC=0x657E14==ftruncate; 54 EOS_AntiCheatClient_* exports = game-side anticheat runtime (unobfuscated)"
+  },
+  "service_decoded_2026_08_17": {
+   "artifacts": [
+    "eac_service_decoded.dylib",
+    "eac_service.md"
+   ],
+   "notes": "codec formula from EOS sub_563D5C verified 1108/1108; embedded image decoded to valid Mach-O arm64 EAC ingame service; ABI _x/_y mapped; imports/strings inventoried"
+  },
+  "service_core_2026_08_17": {
+   "artifacts": [
+    "eac_service.md",
+    "svc_cv_wrappers.json"
+   ],
+   "notes": "start_service virtualized (JUMPOUT 0x18AE18); context 0x2B20 layout from native init 0x106E0 (vtable B42A8, 5 worker-queues, callback list); threading model mapped (4 native starters called from VM); service VM has DIFFERENT 26-opcode table (per-build encoding)"
+  },
+  "eos_api_2026_08_17": {
+   "artifacts": [
+    "eos_api.md",
+    "runs/eos_ac_exports.txt",
+    "runs/eos_api_thunks.json",
+    "runs/eos_api_impls.json"
+   ],
+   "notes": "54 exports decompiled; dispatch: thunk -> interface vtable -> engine(this+728) or fallback fn-ptrs(this+512..704); client vtable @0x15D9E00 decoded from chained fixups; handoff/service load triggered by AddNotifyClientIntegrityViolated impl 0x5630E4"
+  }
+ }
+}

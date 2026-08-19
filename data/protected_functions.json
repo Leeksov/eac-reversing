@@ -1,0 +1,439 @@
+{
+  "schema": "cv-protected-map-v1",
+  "module": "/Users/leeksov/Desktop/reversesmth/pcrust/mac_arm64.decoded",
+  "statistics": {
+    "function_count": 28,
+    "entry_count": 29,
+    "multi_entry_functions": 1,
+    "unjoined_sources": 0
+  },
+  "functions": [
+    {
+      "start": 14512,
+      "start_hex": "0x38b0",
+      "name": "sub_38B0",
+      "size": 12,
+      "entries": [
+        {
+          "source": 14520,
+          "source_hex": "0x38b8",
+          "target": 7342212,
+          "target_hex": "0x700884",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 14628,
+      "start_hex": "0x3924",
+      "name": "sub_3924",
+      "size": 56,
+      "entries": [
+        {
+          "source": 14680,
+          "source_hex": "0x3958",
+          "target": 7480552,
+          "target_hex": "0x7224e8",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 15612,
+      "start_hex": "0x3cfc",
+      "name": "sub_3CFC",
+      "size": 32,
+      "entries": [
+        {
+          "source": 15428,
+          "source_hex": "0x3c44",
+          "target": 8521352,
+          "target_hex": "0x820688",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 15652,
+      "start_hex": "0x3d24",
+      "name": "sub_3D24",
+      "size": 12,
+      "entries": [
+        {
+          "source": 15660,
+          "source_hex": "0x3d2c",
+          "target": 7365684,
+          "target_hex": "0x706434",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 15748,
+      "start_hex": "0x3d84",
+      "name": "sub_3D84",
+      "size": 56,
+      "entries": [
+        {
+          "source": 15800,
+          "source_hex": "0x3db8",
+          "target": 7750080,
+          "target_hex": "0x7641c0",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 16312,
+      "start_hex": "0x3fb8",
+      "name": "sub_3FB8",
+      "size": 52,
+      "entries": [
+        {
+          "source": 16360,
+          "source_hex": "0x3fe8",
+          "target": 7845528,
+          "target_hex": "0x77b698",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 16908,
+      "start_hex": "0x420c",
+      "name": "sub_420C",
+      "size": 52,
+      "entries": [
+        {
+          "source": 16956,
+          "source_hex": "0x423c",
+          "target": 7577444,
+          "target_hex": "0x739f64",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 17388,
+      "start_hex": "0x43ec",
+      "name": "sub_43EC",
+      "size": 180,
+      "entries": [
+        {
+          "source": 17244,
+          "source_hex": "0x435c",
+          "target": 8521272,
+          "target_hex": "0x820638",
+          "kind": "b"
+        },
+        {
+          "source": 17272,
+          "source_hex": "0x4378",
+          "target": 8543548,
+          "target_hex": "0x825d3c",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 18504,
+      "start_hex": "0x4848",
+      "name": "sub_4848",
+      "size": 60,
+      "entries": [
+        {
+          "source": 18560,
+          "source_hex": "0x4880",
+          "target": 7582640,
+          "target_hex": "0x73b3b0",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 18948,
+      "start_hex": "0x4a04",
+      "name": "sub_4A04",
+      "size": 48,
+      "entries": [
+        {
+          "source": 18992,
+          "source_hex": "0x4a30",
+          "target": 7380400,
+          "target_hex": "0x709db0",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 19672,
+      "start_hex": "0x4cd8",
+      "name": "sub_4CD8",
+      "size": 32,
+      "entries": [
+        {
+          "source": 19700,
+          "source_hex": "0x4cf4",
+          "target": 7708456,
+          "target_hex": "0x759f28",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 19856,
+      "start_hex": "0x4d90",
+      "name": "sub_4D90",
+      "size": 72,
+      "entries": [
+        {
+          "source": 19924,
+          "source_hex": "0x4dd4",
+          "target": 7477792,
+          "target_hex": "0x721a20",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 63520,
+      "start_hex": "0xf820",
+      "name": "sub_F820",
+      "size": 40,
+      "entries": [
+        {
+          "source": 63556,
+          "source_hex": "0xf844",
+          "target": 7671848,
+          "target_hex": "0x751028",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 134160,
+      "start_hex": "0x20c10",
+      "name": "sub_20C10",
+      "size": 60,
+      "entries": [
+        {
+          "source": 134216,
+          "source_hex": "0x20c48",
+          "target": 7745844,
+          "target_hex": "0x763134",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 135412,
+      "start_hex": "0x210f4",
+      "name": "sub_210F4",
+      "size": 52,
+      "entries": [
+        {
+          "source": 135460,
+          "source_hex": "0x21124",
+          "target": 7371096,
+          "target_hex": "0x707958",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 136224,
+      "start_hex": "0x21420",
+      "name": "sub_21420",
+      "size": 48,
+      "entries": [
+        {
+          "source": 136268,
+          "source_hex": "0x2144c",
+          "target": 7203872,
+          "target_hex": "0x6dec20",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 319956,
+      "start_hex": "0x4e1d4",
+      "name": "sub_4E1D4",
+      "size": 40,
+      "entries": [
+        {
+          "source": 319992,
+          "source_hex": "0x4e1f8",
+          "target": 7225584,
+          "target_hex": "0x6e40f0",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 320292,
+      "start_hex": "0x4e324",
+      "name": "sub_4E324",
+      "size": 32,
+      "entries": [
+        {
+          "source": 320320,
+          "source_hex": "0x4e340",
+          "target": 7270836,
+          "target_hex": "0x6ef1b4",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 320416,
+      "start_hex": "0x4e3a0",
+      "name": "sub_4E3A0",
+      "size": 48,
+      "entries": [
+        {
+          "source": 320460,
+          "source_hex": "0x4e3cc",
+          "target": 7366460,
+          "target_hex": "0x70673c",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 337216,
+      "start_hex": "0x52540",
+      "name": "sub_52540",
+      "size": 48,
+      "entries": [
+        {
+          "source": 337260,
+          "source_hex": "0x5256c",
+          "target": 7995100,
+          "target_hex": "0x79fedc",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 338656,
+      "start_hex": "0x52ae0",
+      "name": "sub_52AE0",
+      "size": 20,
+      "entries": [
+        {
+          "source": 338672,
+          "source_hex": "0x52af0",
+          "target": 7185492,
+          "target_hex": "0x6da454",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 338788,
+      "start_hex": "0x52b64",
+      "name": "sub_52B64",
+      "size": 44,
+      "entries": [
+        {
+          "source": 338828,
+          "source_hex": "0x52b8c",
+          "target": 7919732,
+          "target_hex": "0x78d874",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 339668,
+      "start_hex": "0x52ed4",
+      "name": "sub_52ED4",
+      "size": 44,
+      "entries": [
+        {
+          "source": 339708,
+          "source_hex": "0x52efc",
+          "target": 7483380,
+          "target_hex": "0x722ff4",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 340652,
+      "start_hex": "0x532ac",
+      "name": "sub_532AC",
+      "size": 56,
+      "entries": [
+        {
+          "source": 340704,
+          "source_hex": "0x532e0",
+          "target": 7261456,
+          "target_hex": "0x6ecd10",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 342096,
+      "start_hex": "0x53850",
+      "name": "sub_53850",
+      "size": 56,
+      "entries": [
+        {
+          "source": 342148,
+          "source_hex": "0x53884",
+          "target": 7544476,
+          "target_hex": "0x731e9c",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 343280,
+      "start_hex": "0x53cf0",
+      "name": "sub_53CF0",
+      "size": 48,
+      "entries": [
+        {
+          "source": 343324,
+          "source_hex": "0x53d1c",
+          "target": 8034224,
+          "target_hex": "0x7a97b0",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 346332,
+      "start_hex": "0x548dc",
+      "name": "sub_548DC",
+      "size": 52,
+      "entries": [
+        {
+          "source": 346380,
+          "source_hex": "0x5490c",
+          "target": 7837032,
+          "target_hex": "0x779568",
+          "kind": "b"
+        }
+      ]
+    },
+    {
+      "start": 346796,
+      "start_hex": "0x54aac",
+      "name": "sub_54AAC",
+      "size": 48,
+      "entries": [
+        {
+          "source": 346840,
+          "source_hex": "0x54ad8",
+          "target": 7746040,
+          "target_hex": "0x7631f8",
+          "kind": "b"
+        }
+      ]
+    }
+  ]
+}
