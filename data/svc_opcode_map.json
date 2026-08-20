@@ -1,0 +1,883 @@
+{
+  "schema": "svc-opcode-map-v1",
+  "binary": "devirt/eac_service_decoded.dylib",
+  "dispatch_table": {
+    "vm_addr": "0xc42d0",
+    "entry_count": 247,
+    "entry_size": 16,
+    "format": "paired (handler_ptr_slot0, handler_ptr_slot1)"
+  },
+  "dispatch_handler": {
+    "start": "0x1000e0",
+    "end": "0x100478",
+    "return_trampoline": "0x11e850",
+    "key_instructions": {
+      "halfword_fetch_1": "0x100168: ldrh w27, [x16]",
+      "halfword_fetch_2": "0x1002E8: ldrh w27, [x9]",
+      "table_load": "0x1003F4: ldr x2, [x14]",
+      "dispatch_branch": "0x100478: br x2",
+      "vpc_store": "0x100474: str x26, [x8]  (x8 = x29+0x150)"
+    },
+    "vpc_state_offset": "0x150",
+    "notes": [
+      "Opcode bytes are read as halfwords and transformed through",
+      "obfuscated arithmetic (ADD/XOR with VM state at [x29+0x114]",
+      "and [x29+0x118]) before indexing the dispatch table.",
+      "The transformation key is per-build and cannot be statically",
+      "recovered without reversing the obfuscation or instrumenting",
+      "the harness to capture pre-transform values."
+    ]
+  },
+  "known_opcode_bytes": [
+    "0x2",
+    "0x3",
+    "0x7",
+    "0xc",
+    "0xd",
+    "0x11",
+    "0x20",
+    "0x2c",
+    "0x2e",
+    "0x33",
+    "0x44",
+    "0x6e",
+    "0x83",
+    "0x85",
+    "0x8f",
+    "0x93",
+    "0xa3",
+    "0xb5",
+    "0xbc",
+    "0xbe",
+    "0xc4",
+    "0xd7",
+    "0xe1",
+    "0xee",
+    "0xfa",
+    "0xfe"
+  ],
+  "observed_table_indices": [
+    5,
+    7,
+    8,
+    10,
+    43,
+    49,
+    54,
+    56,
+    65,
+    69,
+    79,
+    93,
+    109,
+    130,
+    134,
+    136,
+    151,
+    169,
+    185,
+    192,
+    200,
+    207,
+    227,
+    237,
+    239,
+    241
+  ],
+  "opcode_handlers": {
+    "5": {
+      "table_index": 5,
+      "table_slot_used": 0,
+      "handler_addr": "0x173de0",
+      "trampoline_addr": "0xf3310",
+      "dispatch_count": 1,
+      "avg_insn_count": 2048,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "7": {
+      "table_index": 7,
+      "table_slot_used": 0,
+      "handler_addr": "0x1728a8",
+      "trampoline_addr": "0xf3570",
+      "dispatch_count": 4,
+      "avg_insn_count": 180540,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "8": {
+      "table_index": 8,
+      "table_slot_used": 0,
+      "handler_addr": "0x12bbdc",
+      "trampoline_addr": "0x11fdc0",
+      "dispatch_count": 5,
+      "avg_insn_count": 100085,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "10": {
+      "table_index": 10,
+      "table_slot_used": 1,
+      "handler_addr": "0xdf58c",
+      "trampoline_addr": "0xfdbd8",
+      "dispatch_count": 1,
+      "avg_insn_count": 191783,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "43": {
+      "table_index": 43,
+      "table_slot_used": 0,
+      "handler_addr": "0x1b2c7c",
+      "trampoline_addr": "0x12dac0",
+      "dispatch_count": 1,
+      "avg_insn_count": 4300,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "49": {
+      "table_index": 49,
+      "table_slot_used": 1,
+      "handler_addr": "0xf4aac",
+      "trampoline_addr": "0x121008",
+      "dispatch_count": 1,
+      "avg_insn_count": 18475,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "54": {
+      "table_index": 54,
+      "table_slot_used": 1,
+      "handler_addr": "0x127c60",
+      "trampoline_addr": "0xf3fb8",
+      "dispatch_count": 7,
+      "avg_insn_count": 66775,
+      "opcode_byte": null,
+      "semantic_hint": "moderate (memory op / computed branch)"
+    },
+    "56": {
+      "table_index": 56,
+      "table_slot_used": 1,
+      "handler_addr": "0xf08dc",
+      "trampoline_addr": "0x12da88",
+      "dispatch_count": 4,
+      "avg_insn_count": 55135,
+      "opcode_byte": null,
+      "semantic_hint": "moderate (memory op / computed branch)"
+    },
+    "65": {
+      "table_index": 65,
+      "table_slot_used": 0,
+      "handler_addr": "0x10f59c",
+      "trampoline_addr": "0x122750",
+      "dispatch_count": 2,
+      "avg_insn_count": 156148,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "69": {
+      "table_index": 69,
+      "table_slot_used": 1,
+      "handler_addr": "0x100758",
+      "trampoline_addr": "0xf1898",
+      "dispatch_count": 1,
+      "avg_insn_count": 108366,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "79": {
+      "table_index": 79,
+      "table_slot_used": 1,
+      "handler_addr": "0x1975fc",
+      "trampoline_addr": "0x1030d8",
+      "dispatch_count": 1,
+      "avg_insn_count": 164115,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "93": {
+      "table_index": 93,
+      "table_slot_used": 0,
+      "handler_addr": "0x10c828",
+      "trampoline_addr": "0x11fdd0",
+      "dispatch_count": 4,
+      "avg_insn_count": 2584,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "109": {
+      "table_index": 109,
+      "table_slot_used": 1,
+      "handler_addr": "0xdfb58",
+      "trampoline_addr": "0x120fc8",
+      "dispatch_count": 2,
+      "avg_insn_count": 286019,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "130": {
+      "table_index": 130,
+      "table_slot_used": 0,
+      "handler_addr": "0xee0d4",
+      "trampoline_addr": "0x111b90",
+      "dispatch_count": 9,
+      "avg_insn_count": 169605,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "134": {
+      "table_index": 134,
+      "table_slot_used": 1,
+      "handler_addr": "0xfc0dc",
+      "trampoline_addr": "0x11fc48",
+      "dispatch_count": 3,
+      "avg_insn_count": 14294,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "136": {
+      "table_index": 136,
+      "table_slot_used": 0,
+      "handler_addr": "0xfadc0",
+      "trampoline_addr": "0x122bd0",
+      "dispatch_count": 2,
+      "avg_insn_count": 90512,
+      "opcode_byte": null,
+      "semantic_hint": "moderate (memory op / computed branch)"
+    },
+    "151": {
+      "table_index": 151,
+      "table_slot_used": 0,
+      "handler_addr": "0x1a6dac",
+      "trampoline_addr": "0x11feb0",
+      "dispatch_count": 1,
+      "avg_insn_count": 108717,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "169": {
+      "table_index": 169,
+      "table_slot_used": 0,
+      "handler_addr": "0x161048",
+      "trampoline_addr": "0x124af0",
+      "dispatch_count": 1,
+      "avg_insn_count": 103299,
+      "opcode_byte": null,
+      "semantic_hint": "heavy (complex computation / native call setup)"
+    },
+    "185": {
+      "table_index": 185,
+      "table_slot_used": 1,
+      "handler_addr": "0x14dde4",
+      "trampoline_addr": "0x11fe38",
+      "dispatch_count": 1,
+      "avg_insn_count": 57743,
+      "opcode_byte": null,
+      "semantic_hint": "moderate (memory op / computed branch)"
+    },
+    "192": {
+      "table_index": 192,
+      "table_slot_used": 1,
+      "handler_addr": "0x151508",
+      "trampoline_addr": "0x122f78",
+      "dispatch_count": 2,
+      "avg_insn_count": 645,
+      "opcode_byte": null,
+      "semantic_hint": "lightweight (NOP / VPC-advance / flag-set)"
+    },
+    "200": {
+      "table_index": 200,
+      "table_slot_used": 0,
+      "handler_addr": "0xe457c",
+      "trampoline_addr": "0x1220c0",
+      "dispatch_count": 5,
+      "avg_insn_count": 10536,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "207": {
+      "table_index": 207,
+      "table_slot_used": 0,
+      "handler_addr": "0x18e4c4",
+      "trampoline_addr": "0x10bf50",
+      "dispatch_count": 1,
+      "avg_insn_count": 4746,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "227": {
+      "table_index": 227,
+      "table_slot_used": 1,
+      "handler_addr": "0x1c5d80",
+      "trampoline_addr": "0x117b78",
+      "dispatch_count": 3,
+      "avg_insn_count": 19012,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "237": {
+      "table_index": 237,
+      "table_slot_used": 0,
+      "handler_addr": "0x142000",
+      "trampoline_addr": "0x12feb0",
+      "dispatch_count": 1,
+      "avg_insn_count": 15990,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "239": {
+      "table_index": 239,
+      "table_slot_used": 1,
+      "handler_addr": "0x12f9cc",
+      "trampoline_addr": "0x123198",
+      "dispatch_count": 1,
+      "avg_insn_count": 4533,
+      "opcode_byte": null,
+      "semantic_hint": "medium (register move / ALU / load-store)"
+    },
+    "241": {
+      "table_index": 241,
+      "table_slot_used": 0,
+      "handler_addr": "0x1d2c08",
+      "trampoline_addr": "0x11b8b0",
+      "dispatch_count": 2,
+      "avg_insn_count": 574849,
+      "opcode_byte": null,
+      "semantic_hint": "very heavy (multi-native-call / init sequence)"
+    }
+  },
+  "bytecode_stream": [
+    {
+      "cycle": 0,
+      "table_index": 54,
+      "table_slot": 1,
+      "handler": 1211488,
+      "insn_count": 107782
+    },
+    {
+      "cycle": 1,
+      "table_index": 56,
+      "table_slot": 1,
+      "handler": 985308,
+      "insn_count": 55135
+    },
+    {
+      "cycle": 2,
+      "table_index": 8,
+      "table_slot": 0,
+      "handler": 1227740,
+      "insn_count": 109661
+    },
+    {
+      "cycle": 3,
+      "table_index": 93,
+      "table_slot": 0,
+      "handler": 1099816,
+      "insn_count": 2584
+    },
+    {
+      "cycle": 4,
+      "table_index": 7,
+      "table_slot": 0,
+      "handler": 1517736,
+      "insn_count": 228794
+    },
+    {
+      "cycle": 5,
+      "table_index": 54,
+      "table_slot": 1,
+      "handler": 1211488,
+      "insn_count": 107782
+    },
+    {
+      "cycle": 6,
+      "table_index": 56,
+      "table_slot": 1,
+      "handler": 985308,
+      "insn_count": 55135
+    },
+    {
+      "cycle": 7,
+      "table_index": 8,
+      "table_slot": 0,
+      "handler": 1227740,
+      "insn_count": 109661
+    },
+    {
+      "cycle": 8,
+      "table_index": 93,
+      "table_slot": 0,
+      "handler": 1099816,
+      "insn_count": 2584
+    },
+    {
+      "cycle": 9,
+      "table_index": 7,
+      "table_slot": 0,
+      "handler": 1517736,
+      "insn_count": 167257
+    },
+    {
+      "cycle": 10,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 168520
+    },
+    {
+      "cycle": 11,
+      "table_index": 54,
+      "table_slot": 1,
+      "handler": 1211488,
+      "insn_count": 107782
+    },
+    {
+      "cycle": 12,
+      "table_index": 56,
+      "table_slot": 1,
+      "handler": 985308,
+      "insn_count": 55135
+    },
+    {
+      "cycle": 13,
+      "table_index": 8,
+      "table_slot": 0,
+      "handler": 1227740,
+      "insn_count": 109661
+    },
+    {
+      "cycle": 14,
+      "table_index": 93,
+      "table_slot": 0,
+      "handler": 1099816,
+      "insn_count": 2584
+    },
+    {
+      "cycle": 15,
+      "table_index": 7,
+      "table_slot": 0,
+      "handler": 1517736,
+      "insn_count": 163056
+    },
+    {
+      "cycle": 16,
+      "table_index": 241,
+      "table_slot": 0,
+      "handler": 1911816,
+      "insn_count": 588675
+    },
+    {
+      "cycle": 17,
+      "table_index": 192,
+      "table_slot": 1,
+      "handler": 1381640,
+      "insn_count": 645
+    },
+    {
+      "cycle": 18,
+      "table_index": 200,
+      "table_slot": 0,
+      "handler": 935292,
+      "insn_count": 2934
+    },
+    {
+      "cycle": 19,
+      "table_index": 109,
+      "table_slot": 1,
+      "handler": 916312,
+      "insn_count": 283860
+    },
+    {
+      "cycle": 20,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 168520
+    },
+    {
+      "cycle": 21,
+      "table_index": 54,
+      "table_slot": 1,
+      "handler": 1211488,
+      "insn_count": 107782
+    },
+    {
+      "cycle": 22,
+      "table_index": 56,
+      "table_slot": 1,
+      "handler": 985308,
+      "insn_count": 55135
+    },
+    {
+      "cycle": 23,
+      "table_index": 8,
+      "table_slot": 0,
+      "handler": 1227740,
+      "insn_count": 109661
+    },
+    {
+      "cycle": 24,
+      "table_index": 93,
+      "table_slot": 0,
+      "handler": 1099816,
+      "insn_count": 2584
+    },
+    {
+      "cycle": 25,
+      "table_index": 7,
+      "table_slot": 0,
+      "handler": 1517736,
+      "insn_count": 163056
+    },
+    {
+      "cycle": 26,
+      "table_index": 241,
+      "table_slot": 0,
+      "handler": 1911816,
+      "insn_count": 561023
+    },
+    {
+      "cycle": 27,
+      "table_index": 192,
+      "table_slot": 1,
+      "handler": 1381640,
+      "insn_count": 645
+    },
+    {
+      "cycle": 28,
+      "table_index": 200,
+      "table_slot": 0,
+      "handler": 935292,
+      "insn_count": 2934
+    },
+    {
+      "cycle": 29,
+      "table_index": 109,
+      "table_slot": 1,
+      "handler": 916312,
+      "insn_count": 288178
+    },
+    {
+      "cycle": 30,
+      "table_index": 79,
+      "table_slot": 1,
+      "handler": 1668604,
+      "insn_count": 164115
+    },
+    {
+      "cycle": 31,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 293958
+    },
+    {
+      "cycle": 32,
+      "table_index": 10,
+      "table_slot": 1,
+      "handler": 914828,
+      "insn_count": 191783
+    },
+    {
+      "cycle": 33,
+      "table_index": 151,
+      "table_slot": 0,
+      "handler": 1732012,
+      "insn_count": 108717
+    },
+    {
+      "cycle": 34,
+      "table_index": 69,
+      "table_slot": 1,
+      "handler": 1050456,
+      "insn_count": 108366
+    },
+    {
+      "cycle": 35,
+      "table_index": 65,
+      "table_slot": 0,
+      "handler": 1111452,
+      "insn_count": 230485
+    },
+    {
+      "cycle": 36,
+      "table_index": 237,
+      "table_slot": 0,
+      "handler": 1318912,
+      "insn_count": 15990
+    },
+    {
+      "cycle": 37,
+      "table_index": 65,
+      "table_slot": 0,
+      "handler": 1111452,
+      "insn_count": 81811
+    },
+    {
+      "cycle": 38,
+      "table_index": 207,
+      "table_slot": 0,
+      "handler": 1631428,
+      "insn_count": 4746
+    },
+    {
+      "cycle": 39,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 80164
+    },
+    {
+      "cycle": 40,
+      "table_index": 49,
+      "table_slot": 1,
+      "handler": 1002156,
+      "insn_count": 18475
+    },
+    {
+      "cycle": 41,
+      "table_index": 43,
+      "table_slot": 0,
+      "handler": 1780860,
+      "insn_count": 4300
+    },
+    {
+      "cycle": 42,
+      "table_index": 227,
+      "table_slot": 1,
+      "handler": 1858944,
+      "insn_count": 19012
+    },
+    {
+      "cycle": 43,
+      "table_index": 54,
+      "table_slot": 1,
+      "handler": 1211488,
+      "insn_count": 10162
+    },
+    {
+      "cycle": 44,
+      "table_index": 227,
+      "table_slot": 1,
+      "handler": 1858944,
+      "insn_count": 19012
+    },
+    {
+      "cycle": 45,
+      "table_index": 54,
+      "table_slot": 1,
+      "handler": 1211488,
+      "insn_count": 10162
+    },
+    {
+      "cycle": 46,
+      "table_index": 227,
+      "table_slot": 1,
+      "handler": 1858944,
+      "insn_count": 19012
+    },
+    {
+      "cycle": 47,
+      "table_index": 54,
+      "table_slot": 1,
+      "handler": 1211488,
+      "insn_count": 15978
+    },
+    {
+      "cycle": 48,
+      "table_index": 185,
+      "table_slot": 1,
+      "handler": 1367524,
+      "insn_count": 57743
+    },
+    {
+      "cycle": 49,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 9771
+    },
+    {
+      "cycle": 50,
+      "table_index": 8,
+      "table_slot": 0,
+      "handler": 1227740,
+      "insn_count": 61781
+    },
+    {
+      "cycle": 51,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 52838
+    },
+    {
+      "cycle": 52,
+      "table_index": 200,
+      "table_slot": 0,
+      "handler": 935292,
+      "insn_count": 15604
+    },
+    {
+      "cycle": 53,
+      "table_index": 134,
+      "table_slot": 1,
+      "handler": 1032412,
+      "insn_count": 14094
+    },
+    {
+      "cycle": 54,
+      "table_index": 200,
+      "table_slot": 0,
+      "handler": 935292,
+      "insn_count": 15604
+    },
+    {
+      "cycle": 55,
+      "table_index": 134,
+      "table_slot": 1,
+      "handler": 1032412,
+      "insn_count": 14094
+    },
+    {
+      "cycle": 56,
+      "table_index": 200,
+      "table_slot": 0,
+      "handler": 935292,
+      "insn_count": 15604
+    },
+    {
+      "cycle": 57,
+      "table_index": 134,
+      "table_slot": 1,
+      "handler": 1032412,
+      "insn_count": 14694
+    },
+    {
+      "cycle": 58,
+      "table_index": 169,
+      "table_slot": 0,
+      "handler": 1445960,
+      "insn_count": 103299
+    },
+    {
+      "cycle": 59,
+      "table_index": 136,
+      "table_slot": 0,
+      "handler": 1027520,
+      "insn_count": 108614
+    },
+    {
+      "cycle": 60,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 498015
+    },
+    {
+      "cycle": 61,
+      "table_index": 5,
+      "table_slot": 0,
+      "handler": 1523168,
+      "insn_count": 2048
+    },
+    {
+      "cycle": 62,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 234421
+    },
+    {
+      "cycle": 63,
+      "table_index": 239,
+      "table_slot": 1,
+      "handler": 1243596,
+      "insn_count": 4533
+    },
+    {
+      "cycle": 64,
+      "table_index": 130,
+      "table_slot": 0,
+      "handler": 975060,
+      "insn_count": 20243
+    },
+    {
+      "cycle": 65,
+      "table_index": 136,
+      "table_slot": 0,
+      "handler": 1027520,
+      "insn_count": 72410
+    }
+  ],
+  "bytecode_summary": {
+    "total_dispatches": 66,
+    "unique_handlers": 26,
+    "patterns": [
+      {
+        "subsequence": [
+          54,
+          56,
+          8
+        ],
+        "length": 3,
+        "occurrences": 4,
+        "first_at": 0
+      },
+      {
+        "subsequence": [
+          56,
+          8,
+          93
+        ],
+        "length": 3,
+        "occurrences": 4,
+        "first_at": 1
+      },
+      {
+        "subsequence": [
+          8,
+          93,
+          7
+        ],
+        "length": 3,
+        "occurrences": 4,
+        "first_at": 2
+      },
+      {
+        "subsequence": [
+          54,
+          56,
+          8,
+          93
+        ],
+        "length": 4,
+        "occurrences": 4,
+        "first_at": 0
+      },
+      {
+        "subsequence": [
+          56,
+          8,
+          93,
+          7
+        ],
+        "length": 4,
+        "occurrences": 4,
+        "first_at": 1
+      },
+      {
+        "subsequence": [
+          54,
+          56,
+          8,
+          93,
+          7
+        ],
+        "length": 5,
+        "occurrences": 4,
+        "first_at": 0
+      }
+    ]
+  }
+}
