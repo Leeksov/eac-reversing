@@ -504,7 +504,11 @@ def emit_node(node: IRNode) -> str:
         if node.src:
             src = _vreg_name(node.src[0])
             return f"{dst} = {src};"
-        return f"/* MOV: no source */;"
+        if node.raw_operation and not node.raw_operation.startswith("/*"):
+            return f"{node.raw_operation};  // {node.comment}"
+        if node.raw_operation:
+            return f"{node.raw_operation}  // {node.comment}"
+        return f"/* vm_compute */;  // {node.comment}"
 
     if node.kind == IRKind.LOAD:
         return _emit_load(node)
@@ -556,6 +560,8 @@ def emit_node(node: IRNode) -> str:
         return "return;"
 
     if node.kind == IRKind.CALL:
+        if node.raw_operation and node.raw_operation != f"/* CALL */":
+            return f"{node.raw_operation};  // {node.comment}"
         func_name = NATIVE_STUBS.get(node.opcode, f"native_{node.opcode}")
         args = ", ".join(_vreg_name(s) for s in node.src)
         if node.dst:
