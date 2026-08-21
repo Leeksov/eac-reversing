@@ -174,6 +174,12 @@ python3 tools/offline_cv_trace.py mac_arm64.decoded \
     --report /tmp/boot_report.json
 ```
 
+## About This Project
+
+This repository serves as a demonstration of what **GLM 5.3 Max** is capable of. The entire research — from initial binary triage to full decompilation, deobfuscation pipeline, and runtime scenario harnesses — was conducted as a test of the model's reasoning, reverse engineering, and code generation abilities.
+
+**54 files, 27,000+ lines of code and documentation, 22 analysis documents, 19 tools** — produced by the model through iterative exploration of a real-world, heavily obfuscated anti-cheat system protected by Code Virtualizer.
+
 ## Disclaimer
 
 This research is conducted for educational and security research purposes. All analysis is performed on legitimately obtained software through static and dynamic analysis techniques.
