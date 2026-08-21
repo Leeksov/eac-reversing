@@ -99,12 +99,63 @@ Decompiled from a 6.7M-instruction Unicorn trace (353 import calls):
 6. Fingerprint system: PID, HID input event count, timestamps
 7. Check environment variables
 
+## Target Binaries
+
+Binaries are not included in the repository. Here is how to obtain them:
+
+### mac_arm64.decoded (EAC Bootstrapper)
+
+The EAC bootstrapper for macOS arm64. Located inside the game's app bundle:
+
+```
+<Steam>/steamapps/common/Rust/rust.app/Contents/MacOS/start_protected_game
+```
+
+This is a Mach-O universal binary (`com.epicgames.easyanticheat`, v1.9.4). Extract the arm64 slice:
+
+```bash
+lipo start_protected_game -thin arm64 -output mac_arm64.decoded
+```
+
+The same binary is also at `rust.app/Contents/MacOS/rust` — they are identical.
+
+### eac_service_decoded.dylib (In-Game Service)
+
+The EAC in-game service dylib, embedded inside the bootstrapper binary as an obfuscated container. To extract:
+
+1. Run the bootstrapper through the Unicorn harness to dump the shm handoff, or locate the embedded image at file offset `0x57CE4` (size `0x657AEC` bytes including the 20-byte container header).
+
+2. Decode the container using `src/codec.py`:
+
+```bash
+# Extract raw container from the bootstrapper binary
+python3 -c "
+data = open('mac_arm64.decoded', 'rb').read()
+open('eac_embedded_image.bin', 'wb').write(data[0x57CE4:0x57CE4+0x657AEC])
+"
+
+# Decode the container (strips header, deobfuscates payload)
+python3 src/codec.py eac_embedded_image.bin eac_service_decoded.dylib
+```
+
+The result is a valid Mach-O arm64 dylib (6.6 MB) with install name `../Bin/easyanticheat_mac_arm64.eac.ingame.tmp`. The game writes this to a temp path and loads it via `dlopen`.
+
+**Container format**: `{u64 0, u32 magic 0xE6ACC57F, u32 payload_len, u32 header_len, obfuscated_payload}`. See [docs/02-container-codec.md](docs/02-container-codec.md) for the deobfuscation formula.
+
+### Other binaries (optional)
+
+| Binary | Location | Purpose |
+|--------|----------|---------|
+| `libEOSSDK-Mac-Shipping.dylib` | `RustClient.app/Contents/PlugIns/` | EOS SDK (fat: x86_64+arm64), contains the unobfuscated handoff parser |
+| `GameAssembly.dylib` | `RustClient.app/Contents/Frameworks/` | Unity IL2CPP game code |
+| `Settings.json` | `EasyAntiCheat/` | Product/sandbox/deployment GUIDs |
+
 ## Requirements
 
 - Python 3.9+
 - [Unicorn Engine](https://www.unicorn-engine.org/) (`pip install unicorn`)
 - [Capstone](https://www.capstone-engine.org/) (`pip install capstone`)
-- Target binaries (not included in repo — see docs for paths)
+- Target binaries (see above)
 
 ## Reproduction
 
